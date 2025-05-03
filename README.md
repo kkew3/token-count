@@ -1,6 +1,6 @@
 # Token Count
 
-Token Count is a command-line utility that counts the number of tokens in a text string, file, or directory, similar to the Unix [`wc`](https://man7.org/linux/man-pages/man1/wc.1.html) utility. It uses the OpenAI [`tiktoken`](https://github.com/openai/tiktoken) library for tokenization and is compatible with GPT-3.5-turbo or any other OpenAI model token counts.
+Token Count is a command-line utility that counts the number of tokens in a text string or files similar to the Unix [`wc`](https://man7.org/linux/man-pages/man1/wc.1.html) utility. It uses the OpenAI [`tiktoken`](https://github.com/openai/tiktoken) library for tokenization and is compatible with GPT-3.5-turbo or any other OpenAI model token counts.
 
 ## Installation
 
@@ -49,7 +49,8 @@ token-count path/to/your/file.txt
 Count tokens in all python files:
 
 ```bash
-find . -type f -name '*.py' -not -path './venv/*' -print0 | token-count --files-from=- --null
+find . -type f -name '*.py' -not -path './venv/*' -print0 \
+    | token-count --files-from=- --null
 ```
 
 Additionally, you can provide any OpenAI model(gpt-4) to get token count according to the model. By default it uses "gpt-3.5-turbo".
