@@ -7,7 +7,7 @@
 # The exit code will be 2 if the generated module has been modified by this
 # script, 1 if any error occurs, and 0 otherwise.
 #
-# To run this script, first install via `pip install -e .`.
+# To run this script, first install dependencies via `pip install -e .`.
 
 from pathlib import Path
 import itertools

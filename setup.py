@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="token-count",
-    version="0.2.3",
+    version="0.2.4",
     packages=find_packages(),
     python_requires='>=3.9',
     install_requires=[
@@ -16,9 +16,6 @@ setup(
             "token-count = token_count:main",
         ],
     },
-    scripts=[
-        'scripts/update_available_models.py',
-    ],
     author="Felvin",
     author_email="team@felvin.com",
     description=("Count the number of tokens in a text string or file, "
