@@ -1,13 +1,19 @@
 # Token Count
 
-Token Count is a command-line utility that counts the number of tokens in a text string, file, or directory, similar to the Unix `wc` utility. It uses the OpenAI `tiktoken` library for tokenization and is compatible with GPT-3.5-turbo or any other OpenAI model token counts.
+Token Count is a command-line utility that counts the number of tokens in a text string, file, or directory, similar to the Unix [`wc`](https://man7.org/linux/man-pages/man1/wc.1.html) utility. It uses the OpenAI [`tiktoken`](https://github.com/openai/tiktoken) library for tokenization and is compatible with GPT-3.5-turbo or any other OpenAI model token counts.
 
 ## Installation
 
 To install Token Count, run the following command in your terminal:
 
 ```bash
-pip install token-count
+pip install 'git+https://github.com/kkew3/token-count.git'
+```
+
+You may also install as an executable using [`pipx`](https://pipx.pypa.io/stable/) or [`uv`](https://docs.astral.sh/uv/):
+
+```bash
+uv tool install 'git+https://github.com/kkew3/token-count.git'
 ```
 
 ## Usage - Python Library
@@ -22,10 +28,6 @@ print(f"Tokens in the string: {tokens}")
 file_path = "path/to/your/file.txt"
 tokens = tc.num_tokens_from_file(file_path)
 print(f"Tokens in the file: {tokens}")
-
-dir_path = "path/to/your/directory"
-tokens = tc.num_tokens_from_directory(dir_path)
-print(f"Tokens in the directory: {tokens}")
 ```
 
 ## Usage - Command Line
@@ -34,22 +36,19 @@ Token Count has three main options:
 
 Count tokens in a text string:
 ```bash
-token-count --text "Your text here"
-```
-Count tokens in a file:
-```bash
-token-count --file path/to/your/file.txt
+echo -n "Your text here" | token-count
 ```
 
-Count tokens in a directory (recursively):
+Count tokens in a file:
+
 ```bash
-token-count --directory path/to/your/directory
+token-count path/to/your/file.txt
 ```
-You can provide any combination of these options. Token Count will print the token count for each input type.
 
 Additionally, you can provide any OpenAI model(gpt-4) to get token count according to the model. By default it uses "gpt-3.5-turbo".
+
 ```bash
-token-count --model_name "gpt-4"
+echo -n "Your text here" | token-count --model_name "gpt-4"
 ```
 
 ## License
