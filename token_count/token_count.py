@@ -5,7 +5,7 @@ import tiktoken
 from .model_types import MODEL_TYPE
 
 # Create a logger
-logger = logging.getLogger()
+logger = logging.getLogger(__name__)
 
 
 class TokenCount:
