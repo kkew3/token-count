@@ -10,12 +10,13 @@ def main():
     parser = argparse.ArgumentParser(
         description=("Count the number of tokens in a text string or file, "
                      "similar to the Unix 'wc' utility."))
+    default_model = 'gpt-3.5-turbo'
     parser.add_argument(
         "-m",
         "--model_name",
         type=str,
-        help="model name",
-        default="gpt-3.5-turbo",
+        help=f"model name [default: {default_model}]",
+        default=default_model,
         choices=MODEL_LIST)
     parser.add_argument('file', nargs='*', help='file to count tokens in')
 
