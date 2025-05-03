@@ -7,6 +7,7 @@ setup(
     name="token-count",
     version="0.2.1",
     packages=find_packages(),
+    python_requires='>=3.9',
     install_requires=[
         "tiktoken>=0.9",
     ],
