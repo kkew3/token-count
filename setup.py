@@ -8,8 +8,7 @@ setup(
     version="0.2.1",
     packages=find_packages(),
     install_requires=[
-        "tiktoken",
-        "gitignore-parser",
+        "tiktoken>=0.9",
     ],
     entry_points={
         "console_scripts": [
