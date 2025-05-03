@@ -26,12 +26,17 @@ def main():
 
     if args.file:
         total = 0
+        print_width = 4
+        results = []
         for file in args.file:
             tokens = token_count.num_tokens_from_file(file)
-            print(tokens, file)
+            results.append((tokens, file))
             total += tokens
+            print_width = max(print_width, len(str(total)))
+        for tokens, file in results:
+            print('{} {}'.format(str(tokens).rjust(print_width), file))
         if len(args.file) > 1:
-            print(total, 'total')
+            print('{} total'.format(str(total).rjust(print_width)))
     else:
         tokens = token_count.num_tokens_from_string(sys.stdin.read())
         print(tokens)
