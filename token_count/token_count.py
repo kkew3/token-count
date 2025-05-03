@@ -24,9 +24,7 @@ class TokenCount:
     def num_tokens_from_file(self, file_path: str) -> int:
         """Returns the number of tokens in a text file."""
         try:
-            with open(file_path, "r") as f:
-                text = f.read()
-            num_tokens = len(self.encoding.encode(text))
-            return num_tokens
+            with open(file_path, encoding='utf-8') as f:
+                return self.num_tokens_from_string(f.read())
         except Exception as e:
             logger.error("Error occurred: {}".format(e))

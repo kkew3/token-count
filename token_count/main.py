@@ -1,8 +1,9 @@
 # main.py
 import argparse
-from token_count import TokenCount
 import logging
+import sys
 
+from token_count import TokenCount
 from .model_types import MODEL_LIST
 
 
@@ -17,27 +18,22 @@ def main():
         help="model name",
         default="gpt-3.5-turbo",
         choices=MODEL_LIST)
-    parser.add_argument(
-        "-f", "--file", type=str, help="file to count tokens in")
-    parser.add_argument(
-        "-t", "--text", type=str, help="text to count tokens in")
+    parser.add_argument('file', nargs='*', help='file to count tokens in')
 
     args = parser.parse_args()
-    logger = logging.getLogger()
 
     token_count = TokenCount(args.model_name)
 
-    if not any([args.file, args.text]):
-        logger.info("No input provided")
-        parser.print_help()
-        return
-
     if args.file:
-        tokens = token_count.num_tokens_from_file(args.file)
-        print(tokens)
-
-    if args.text:
-        tokens = token_count.num_tokens_from_string(args.text)
+        total = 0
+        for file in args.file:
+            tokens = token_count.num_tokens_from_file(file)
+            print(tokens, file)
+            total += tokens
+        if len(args.file) > 1:
+            print(total, 'total')
+    else:
+        tokens = token_count.num_tokens_from_string(sys.stdin.read())
         print(tokens)
 
 
