@@ -32,9 +32,10 @@ print(f"Tokens in the file: {tokens}")
 
 ## Usage - Command Line
 
-Token Count has three main options:
+Examples:
 
 Count tokens in a text string:
+
 ```bash
 echo -n "Your text here" | token-count
 ```
@@ -43,6 +44,12 @@ Count tokens in a file:
 
 ```bash
 token-count path/to/your/file.txt
+```
+
+Count tokens in all python files:
+
+```bash
+find . -type f -name '*.py' -not -path './venv/*' -print0 | token-count --files-from=- --null
 ```
 
 Additionally, you can provide any OpenAI model(gpt-4) to get token count according to the model. By default it uses "gpt-3.5-turbo".
