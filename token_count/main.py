@@ -1,6 +1,5 @@
 # main.py
 import argparse
-import logging
 import sys
 
 from token_count import TokenCount
@@ -40,7 +39,3 @@ def main():
     else:
         tokens = token_count.num_tokens_from_string(sys.stdin.read())
         print(tokens)
-
-
-if __name__ == "__main__":
-    main()
