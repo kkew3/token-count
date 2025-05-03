@@ -3,6 +3,8 @@ import argparse
 from token_count import TokenCount
 import logging
 
+from .model_types import MODEL_LIST
+
 
 def main():
     parser = argparse.ArgumentParser(
@@ -13,7 +15,8 @@ def main():
         "--model_name",
         type=str,
         help="model name",
-        default="gpt-3.5-turbo")
+        default="gpt-3.5-turbo",
+        choices=MODEL_LIST)
     parser.add_argument(
         "-f", "--file", type=str, help="file to count tokens in")
     parser.add_argument(

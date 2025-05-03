@@ -16,9 +16,13 @@ setup(
             "token-count = token_count:main",
         ],
     },
+    scripts=[
+        'scripts/update_available_models.py',
+    ],
     author="Felvin",
     author_email="team@felvin.com",
-    description="Count the number of tokens in a text string or file, similar to the Unix 'wc' utility.",
+    description=("Count the number of tokens in a text string or file, "
+                 "similar to the Unix 'wc' utility."),
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/felvin-search/token-count",
